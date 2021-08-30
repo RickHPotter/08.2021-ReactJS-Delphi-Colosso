@@ -36,16 +36,19 @@ export default function Login() {
 
     setLoading(true)
 
-    let url = "http://localhost:9000/ping"
+    // let headers = new Headers();
 
-    let headers = new Headers();
-
-    headers.set('Authorization', 'Basic ' + Buffer.from(fields.email + ':' + fields.password).toString('base64'));
+    // headers.set('Authorization', 'Basic ' + Buffer.from(fields.email + ':' + fields.password).toString('base64'));
+    const username = fields.email;
+    const password = fields.password;
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64');
     
     try {
       setError("")
       // useAuth down below
-      await axios.get(url, { headers: headers }, {
+      await axios.get('http://localhost:5000/ping', 
+        { headers: { 'Content-Type': 'application/json',
+                      'Authorization': `Basic ${token}` } }, {
         /* mode: 'no-cors',
         method: 'GET',
         headers: { 
@@ -54,11 +57,10 @@ export default function Login() {
           "Accept-Encoding": "gzip, deflate, br",
           "Connection": "keep-alive",
         }*/
-        auth: { username: fields.email, password: fields.password }
       })
-
+      
       .then(response => response.json())
-      .then(json => console.log(json));
+      .then(json => console.log("am i here" + json));
       // userHasAuthenticated(true);
       history.push("/")
     } 
