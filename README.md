@@ -1,5 +1,7 @@
 login, signup and everything coppied off WebDev Simplified and other resources found on the interwebs
 
+It started off as FireBase, but it ended up going another direction: BasicAuth in Horse, a Delphi Framework. Probably JWT in the future, so I'm changing this repository name from 08.23-login-react-firebase or 08.26-login-react-axios or even 08.30-login-react-basicAuth-delphiHorse to 08.2021-ReactJS-Delphi-Colosso
+
 https://blog.logrocket.com/axios-or-fetch-api/
 
 https://academind.com/tutorials/web-development-overview/
